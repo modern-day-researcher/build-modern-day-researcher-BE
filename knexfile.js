@@ -5,7 +5,7 @@ module.exports = {
     useNullAsDefault: true, // used to avoid warning on console
     migrations: {
       directory: './data/migrations',
-      tableName: 'dbmigrations',
+      tableName: 'knex_migrations',
     },
     seeds: { directory: './data/seeds' },
   },
