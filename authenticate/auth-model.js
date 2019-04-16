@@ -7,12 +7,12 @@ module.exports = {
 };
 
 async function regUser(user) {
-  const [id] = await db("users")
-    .returning("id")
+  const pw = await db("users")
+    .returning("password")
     .insert(user);
 
-  const addUser = await userByID(id);
-  return addUser;
+  // const addUser = await userByID(id);
+  return pw;
 }
 
 function getUser(username) {
