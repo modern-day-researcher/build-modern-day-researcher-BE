@@ -8,8 +8,8 @@ module.exports = {
 
 async function regUser(user) {
   const [id] = await db("users")
-    .insert(user, "id")
-    .returning("id");
+    .returning("id")
+    .insert(user, "id");
 
   const addUser = await userByID(id);
   return addUser;
