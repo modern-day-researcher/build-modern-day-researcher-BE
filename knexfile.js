@@ -1,8 +1,8 @@
 const localPg = {
   host: "localhost",
-  database: "dev",
-  user: "admin",
-  password: "password"
+  database: 'postgres',
+  user: 'postgres',
+  password: process.env.LOCALPG_PW
 };
 const productionDbConnection = process.env.DATABASE_URL || localPg;
 
