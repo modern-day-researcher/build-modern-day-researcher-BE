@@ -20,7 +20,6 @@ module.exports = {
   production: {
     client: "pg",
     connection: productionDbConnection,
-    ssl: true,
     migrations: {
       directory: "./data/migrations"
     },
