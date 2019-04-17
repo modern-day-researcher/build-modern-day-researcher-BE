@@ -40,7 +40,7 @@ function updateReadStatus(userId, article) {
 
 
 async function addArticle(article) {
-  const [ id ] = await db('projects')
+  const [ id ] = await db('articles')
     .insert(article, "id");
 
     const newArticle = await getArticleById(id);
