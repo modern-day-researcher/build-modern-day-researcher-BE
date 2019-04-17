@@ -6,7 +6,8 @@ module.exports = {
   updateReadStatus,
   addArticle,
   getArticleById,
-  removeArticle
+  removeArticle,
+  updateUser
 };
 
 async function getUsers() {
@@ -51,4 +52,10 @@ function removeArticle(id) {
   return db("articles")
     .where("id", id)
     .del();
+}
+
+function updateUser(id, user) {
+  return db("users")
+    .where("id", id)
+    .update(user, "id");
 }
