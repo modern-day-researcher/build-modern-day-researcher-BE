@@ -65,7 +65,7 @@ router.post(':id/articles', (req, res) => {
 
 router.delete('/:id/articles/:artId', (req, res) => {
     let userId = req.params.id;
-    let artId = req.params.artId;
+    let artId = req.params.id;
 
     User
     .getArticleById(artId)
