@@ -75,7 +75,7 @@ router.delete('/:id/articles/:artId', (req, res) => {
             .removeArticle(artId)
             .then(removed => {
                 if (removed > 0) {
-                    releaseEvents.status(200).json({ message: 'Article removed from user' })
+                    res.status(200).json({ message: 'Article removed from user' })
                 } else {
                     res.status(404).json({ message: 'The article selected does not exist' })
                 }
