@@ -41,17 +41,17 @@ router.post("/:id/read", async (req, res) => {
 
 //add an article to a users list
 
-router.post(":id/articles", (req, res) => {
-  const { title, url } = req.body;
-  const { id } = req.params;
+router.post("/articles", (req, res) => {
+  const { category, url } = req.body;
 
-  if (!title && !url) {
-    res.status(400).json({ message: "Please enter an article title and url." });
+  if (!category && !url) {
+    res
+      .status(400)
+      .json({ message: "Please enter an article category and url." });
   } else {
-    req.body.user_id = id;
-    User.addArticle(req.body)
-      .then(id => {
-        res.status(201).json(id);
+    User.addArticle(req.body, req.params)
+      .then(newId => {
+        res.status(201).json(newId);
       })
       .catch(error => {
         res.status(500).json({ message: "Could not add article" });
@@ -61,7 +61,7 @@ router.post(":id/articles", (req, res) => {
 
 //delete a users article from list
 
-router.delete("/:id/articles/:artId", (req, res) => {
+router.delete("/:id/articles", (req, res) => {
   let userId = req.params.id;
   let artId = req.params.artId;
 
