@@ -159,11 +159,11 @@ yarn test
 
 #### Response
 
-##### 200 (OK)
->If you successfully register a user the endpoint will return an HTTP response with a status code `200` and a body as below.
+##### 201 (Created)
+>If you successfully register a user the endpoint will return an HTTP response with a status code `201` and a body as below.
 ```
 { 
-  "message" : "You have registered, ceciljohn!"
+  1
 }
 ```
 ##### 400 (Bad Request)
@@ -195,13 +195,13 @@ ____
 | name           | type   | required | description              |
 | -------------- | ------ | -------- | ------------------------ |
 | `username`        | String | Yes      | Must match a username in the database |
-| `password`     | String | Yes      | Must match a password in the database corresponding to above email |
+| `password`     | String | Yes      | Must match a password in the database |
 
 *example:*
 
 ```
 {
-  username: "ceciljohn",
+  username: "admin",
   password: "password"
 }
 ```
@@ -212,7 +212,7 @@ ____
 >If you successfully login, the endpoint will return an HTTP response with a status code `200` and a body as below.
 ```
 {
-  "message": "Welcome ceciljohn!",
+  "message": "Welcome admin!",
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTQ0MzM1NjUxLCJleHAiOjE1NzU4OTMyNTF9.uqd2OHBYkGQpwjLTPPiPWYkYOKlG7whQDFkk46xGXoE"
 }
 ```
