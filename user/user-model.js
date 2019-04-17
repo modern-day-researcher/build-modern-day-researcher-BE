@@ -9,59 +9,47 @@ module.exports = {
   removeArticle
 };
 
-
 async function getUsers() {
-  return db('users').select('id', 'username', 'password', 'first_name', 'last_name')
+  return db("users").select(
+    "id",
+    "username",
+    "password",
+    "first_name",
+    "last_name"
+  );
 }
-
 
 async function getFullUserData(userId) {
-   //const user = await db("users")
-       //.select("users.first_name", "users.last_name")
-       //.where("id", userId)
-       //.first();
-
-   //const articles = await db("users")
-       //.join("articles", "users.id", "articles.user_id")
-       //.select("articles.category", "articles.title", "articles.url", "articles.description")
-       //.where("users.id", userId)
-
   return db("articles").where({ user_id: userId });
-
-     //return { ...user, articels };
 }
 
-
-function updateReadStatus(userId, article) {
-  return db('articles')
-    .where('user_id', userId)
-    .update(article, "id")
+function updateReadStatus(id, status) {
+  status = !status;
+  return db("articles")
+    .where("id", "=", id)
+    .update({ is_read: status });
 }
-
 
 async function addArticle(article) {
-  const [ id ] = await db('articles')
-    .insert(article, "id");
+  const [id] = await db("articles").insert(article, "id");
 
-    const newArticle = await getArticleById(id);
+  const newArticle = await getArticleById(id);
 
-    return newArticle;
+  return newArticle;
 }
-
 
 function getArticleById(id) {
   const article = db("articles")
     .select("id", "title")
     .where("id", id)
-    .first()
+    .first();
 
-    return article
+  return article;
 }
 
-
 function removeArticle(id) {
-  console.log('removeArticle', id);
-  return db('articles')
-  .where('id', id)
-  .del();
+  console.log("removeArticle", id);
+  return db("articles")
+    .where("id", id)
+    .del();
 }
