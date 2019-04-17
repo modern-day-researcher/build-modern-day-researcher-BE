@@ -40,7 +40,6 @@ router.post("/:id/read", async (req, res) => {
 });
 
 //add an article to a users list
-
 router.post("/articles", (req, res) => {
   const { category, url } = req.body;
 
