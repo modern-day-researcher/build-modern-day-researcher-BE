@@ -31,7 +31,7 @@ function updateReadStatus(id, status) {
 }
 
 async function addArticle(article) {
-  const [id] = await db("articles").insert(article, "id");
+  const [id] = await db("articles").insert(article);
 
   const newArticle = await getArticleById(id);
 
