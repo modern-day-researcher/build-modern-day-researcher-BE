@@ -61,30 +61,21 @@ router.post("/articles", (req, res) => {
 //delete a users article from list
 
 router.delete("/:id/articles", (req, res) => {
-  let userId = req.params.id;
-  let artId = req.params.artId;
+  let id = req.params.id;
 
-  User.getArticleById(artId).then(article => {
-    if (userId === `${article.user_id}`) {
-      User.removeArticle(artId)
-        .then(removed => {
-          if (removed > 0) {
-            res.status(200).json({ message: "Article removed from user" });
-          } else {
-            res
-              .status(404)
-              .json({ message: "The article selected does not exist" });
-          }
-        })
-        .catch(error => {
-          res.status(500).json({ message: "Error removing article" });
-        });
-    } else {
-      res
-        .status(403)
-        .json({ message: "Selected article is not shared with this user" });
-    }
-  });
+  User.removeArticle(id)
+    .then(removed => {
+      if (removed > 0) {
+        res.status(200).json({ message: "Article removed from user" });
+      } else {
+        res
+          .status(404)
+          .json({ message: "The article selected does not exist" });
+      }
+    })
+    .catch(error => {
+      res.status(500).json({ message: "Error removing article" });
+    });
 });
 
 
