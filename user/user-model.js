@@ -55,7 +55,6 @@ function getArticleById(id) {
 }
 
 function removeArticle(id) {
-  console.log("removeArticle", id);
   return db("articles")
     .where("id", id)
     .del();
