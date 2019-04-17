@@ -106,19 +106,12 @@ yarn test
 
 | name | method | endpoint | description|
 | ---- | ------ | -------- | ----------- |
-| Register | POST | /auth/register| Creates a new `user` to the users table in the database |
-|Login|POST|/auth/login|Checks whether payload from the `body` matches with a user in the database. On Succesful login, returns a message and a `JWT Token`|
+| Register | POST | api/auth/register| Creates a new `user` to the users table in the database and returns user id|
+|Login|POST|/api/auth/login|Checks whether payload from the `body` matches with a user in the database. On Succesful login, returns a message, a `JWT Token`, and user id|
 |Get all users|GET|/api/users| `PROTECTED ROUTE` - Returns an array of user objects of all users|
-|Get user by ID|GET|/api/users/:id| `PROTECTED ROUTE` - Returns an array of object of selected user by ID|
-|Delete user by ID|DELETE|/api/users/:id| delete selected user by ID|
-|Get all pokemon|GET|/api/pokemon/all| `PROTECTED ROUTE` - Returns an array of pokemon objects of all pokemon(limited)|
-|Get all pokemon by pagination|GET|/api/pokemon| `PROTECTED ROUTE` - Returns an array of pokemon objects of all pokemon with pagination|
-|Get ErrThang|GET|/api/pokemon/errthang|`PROTECTED ROUTE` - Gets all pokemon with all properties without pagination|
-|Get pokemon by ID|GET|/api/pokemon/:id| `PROTECTED ROUTE` - Returns an array of pokemon objects of selected pokemon by ID|
-Get backpack of specific user|GET|/api/backpack:id|`PROTECTED ROUTE` - Returns and array of objects of all pokemons in the user's backpack|
-|Get all pokemon|GET|/api/backpack|`PROTECTED ROUTE` - returns an array of pokemon in backpack object
-|Insert to backpack|POST|/api/backpack|`PROTECTED ROUTE` - Inserts payload into the backpack database|
-|Delete in backpack|DELETE|/api/backpack/:id|`PROTECTED ROUTE` - Delete a specific pokemon in backpack
+|Get user articles by ID|GET|/api/user/:id| `PROTECTED ROUTE` - Returns an array of object of articles of user|
+|Delete article by ID|DELETE|/api/article/:id| `PROTECTED ROUTE` - delete selected article by ID|
+|Creates article|POST|/api/article| `PROTECTED ROUTE` - returns creation success or faliure response|
 
 [Back to Table of Contents](#table-of-contents)
 
