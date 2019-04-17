@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const User = require("./user-model");
+const bcrypt = require("bcryptjs");
 
 //get list of users
 
