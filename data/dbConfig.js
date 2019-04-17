@@ -1,10 +1,9 @@
+require("dotenv").config();
 
-// Define which database type to use
-const dbEngine = process.env.DB || 'development';
+const knex = require("knex");
 
+const knexConfig = require("../knexfile.js");
 
-// Import the knexfile using the specified database type
-const config = require('../knexfile.js')[dbEngine];
+const dbEnv = process.env.DB_ENV || "development";
 
-// Export the configuration
-module.exports = require('knex')(config); 
+module.exports = knex(knexConfig.development);
