@@ -17,9 +17,10 @@ With rticle you can share and receive articles with people.
   - [Login](#Login)
 - [User routes](#user-routes)
   * [Get all users](#Get-all-users)
-  * [Get user by ID](#Get-user-by-id)
-  * [Delete user](#delete-user)
-  * [Update user](#update-user)
+  * [Get article by ID](#Get-user-by-id)
+  * [Delete article](#delete-article)
+  * [Create article](#create-article)
+  * [Toggle read status](#toggle-read-status)
 ----
 # Overview
 
@@ -112,6 +113,7 @@ yarn test
 |Get user articles by ID|GET|/api/user/:id| `PROTECTED ROUTE` - Returns an array of object of articles of user|
 |Delete article by ID|DELETE|/api/article/:id| `PROTECTED ROUTE` - delete selected article by ID|
 |Creates article|POST|/api/article| `PROTECTED ROUTE` - returns creation success or faliure response|
+|Toggles article read statys |POST|/api/article/read| `PROTECTED ROUTE` - returns update success or faliure response|
 
 [Back to Table of Contents](#table-of-contents)
 
