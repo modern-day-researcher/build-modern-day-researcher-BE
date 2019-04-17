@@ -7,11 +7,11 @@ module.exports = {
 };
 
 async function regUser(user) {
-  const pw = await db("users")
-    .returning("password")
-    .insert({ username: user.username, password: user.password });
+  const pw = await db("users").insert({
+    username: user.username,
+    password: user.password
+  });
 
-  // const addUser = await userByID(id);
   return pw;
 }
 
