@@ -330,5 +330,5 @@ ASALocalRun/
 .mfractor/
 
 # dotenv environment variables file
-.env
+
 

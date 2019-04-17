@@ -25,7 +25,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
-// toggle read status
+// toggle read status   --- the id after user is the article's id not the users
 router.post("/:id/read", async (req, res) => {
   const { is_read } = req.body;
   const { id } = req.params;
@@ -87,5 +87,8 @@ router.delete("/:id/articles/:artId", (req, res) => {
     }
   });
 });
+
+
+
 
 module.exports = router;

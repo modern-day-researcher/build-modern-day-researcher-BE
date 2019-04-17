@@ -40,7 +40,7 @@ async function addArticle(article) {
 
 function getArticleById(id) {
   const article = db("articles")
-    .select("id", "title")
+    .select("id")
     .where("id", id)
     .first();
 
