@@ -218,9 +218,7 @@ ____
 ##### 404 (Not Found)
 >If you send in invalid fields or the passwords do not match, the endpoint will return an HTTP response with a status code `404` and a body as below.
 ```
-{
   { message: "Invalid Credentials" }
-}
 ```
 ##### 401 (Unauthorized)
 >If you do not put password and username, the endpoint will return an HTTP response with a status code `404` and a body as below
@@ -281,10 +279,7 @@ ___
 ##### 500 (Internal Server Error)
 >If there is an error retrieving users then endpoint will return an HTTP response with a status code `500` and a body as below.
 ```
-{
-  "error": true,
-  "message": "There was a problem with your request."
-}
+{ error: "Could not retrieve list of users" }
 ```
 
 ##### 401 (Unauthorized)
