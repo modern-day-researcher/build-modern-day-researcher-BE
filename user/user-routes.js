@@ -32,7 +32,7 @@ router.put("/:id", (req, res) => {
       if (updated > 0) {
         res.status(200).json({ message: "User info updated" });
       } else {
-        res.status(404).json({ message: "Could not update user" });
+        res.status(401).json({ message: "Could not update user" });
       }
     })
     .catch(err => {
@@ -104,30 +104,6 @@ router.delete("/:id/articles", (req, res) => {
     })
     .catch(error => {
       res.status(500).json({ message: "Error removing article" });
-    });
-});
-
-router.put("/:id", (req, res) => {
-  let updatedU = req.body;
-
-  const { id } = req.params;
-  updatedU.id = id;
-
-  if (updatedU.password) {
-    const hash = bcrypt.hashSync(updatedU.password, 10);
-    updatedU.password = hash;
-  }
-
-  User.updateUser(id, updatedU)
-    .then(updated => {
-      if (updated > 0) {
-        res.status(200).json({ message: "User info updated" });
-      } else {
-        res.status(404).json({ message: "Could not update user" });
-      }
-    })
-    .catch(err => {
-      res.status(500).json({ message: "Error updating the user info" });
     });
 });
 
