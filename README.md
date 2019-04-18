@@ -287,6 +287,7 @@ ___
 ```
 { message: "No token provided. Please log in." }
 ```
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
@@ -415,7 +416,7 @@ ___
 { message: "No token provided. Please log in." }
 ```
 ##### 404 (Not Found)
-> If article does not exist, then endpoint will return an HTTP response with a status code `401` and a body as below.
+> If article does not exist, then endpoint will return an HTTP response with a status code `404` and a body as below.
 ```
 { message: "The article selected does not exist" }
 ```
