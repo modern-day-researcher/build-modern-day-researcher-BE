@@ -17,7 +17,7 @@ With rticle you can share and receive articles with people.
   - [Login](#Login)
 - [User routes](#user-routes)
   * [Get all users](#Get-all-users)
-  * [Get article by ID](#Get-user-by-id)
+  * [Get articles by user ID](#Get-articles-by-user-id)
   * [Delete article](#delete-article)
   * [Create article](#create-article)
   * [Toggle read status](#toggle-read-status)
@@ -290,10 +290,10 @@ ___
 
 ---
 
-## **GET USER BY ID**
-### Returns selected user by ID
+## **GET ARTICLES BY USER ID**
+### Returns selected articles by user ID
 
-*Mehod Url:* `/api/users/:id`
+*Mehod Url:* `/api/user/:id`
 *HTTP method:* **[GET]**
 
 #### Headers
@@ -301,7 +301,7 @@ ___
 | name | type   | required | description |
 | ----- | ------ | -------- | ----- |
 | `Content-Type` | String | Yes | Must be application/json |
-| `Authorization`| String | No       | Bearer JWT authorization token |
+| `Authorization`| String | Yes      | Bearer JWT authorization token |
 
 #### Parameters
 
@@ -313,30 +313,78 @@ ___
 #### Response
 
 ##### 200 (OK)
->If you successfully get al the users, the endpoint will return an HTTP response with a status code `200` and a body as below.
+>If you successfully get all the articles of user, the endpoint will return an HTTP response with a status code `200` and a body as below.
 ```
-{
-  "id": 1,
-  "username": "admin",
-  "email": "admin@administrator.com"
-}
+[
+    {
+        "id": 1,
+        "category": "technology",
+        "title": "Purported pricing details of the Google Pixel 3a and Pixel 3a XL surface",
+        "url": "https://www.notebookcheck.net/Purported-pricing-details-of-the-Google-Pixel-3a-and-Pixel-3a-XL-surface.417469.0.html",
+        "description": "The Pixel 3a and 3a XL are expected to be launched next month. Pricing details have been mostly elusive until now but a new leak has given us a good idea of how Google plans to price the mid-range phones.",
+        "is_read": 0,
+        "user_id": 1
+    },
+    {
+        "id": 5,
+        "category": "sports",
+        "title": "L.A. Lakers coaching search: They’re STILL doing this all wrong",
+        "url": "https://www.sbnation.com/2019/4/15/18311158/la-lakers-coach-rumors-updates-rob-pelinka-magic-johnson-why",
+        "description": "Hiring a coach before deciding on Magic Johnson’s replacement? Letting Magic’s No. 2 conduct the search? Lakers, what are you doing?",
+        "is_read": 0,
+        "user_id": 1
+    },
+    {
+        "id": 6,
+        "category": "finance",
+        "title": "France sees blockchain as anti-monopoly weapon in digital world",
+        "url": "https://phys.org/news/2019-04-france-blockchain-anti-monopoly-weapon-digital.html",
+        "description": "France is pushing blockchain technology as a means of preventing finance giants enjoying a monopoly on transactions, Finance Minister Bruno Le Maire said Monday.",
+        "is_read": 0,
+        "user_id": 1
+    },
+    {
+        "id": 7,
+        "category": "business",
+        "title": "Lyft Pulls E-Bikes From Service Amid Alarming Reports of Excessive Braking",
+        "url": "https://gizmodo.com/lyft-pulls-e-bikes-from-service-amid-alarming-reports-o-1834047278",
+        "description": "Following reports of problematic braking that in some cases resulted in rider injury, Lyft is pulling its recently acquired network of e-bikes from service in three major cities. Those include Citi Bike in New York, GoBike in San Francisco, and Capital Bikesh…",
+        "is_read": 0,
+        "user_id": 1
+    },
+    {
+        "id": 12,
+        "category": "technology",
+        "title": "Disc-free Xbox One S could land on May 7th",
+        "url": "https://techcrunch.com/2019/04/15/disc-free-xbox-one-s-could-land-on-may-7th/",
+        "description": "Microsoft is about to launch an even cheaper Xbox One S. In order to cut costs, the company is removing the BluRay disc drive altogether. According to leaked marketing images spotted by WinFuture (via Thurrott), the console could launch on May 7th for €229 in",
+        "is_read": 0,
+        "user_id": 1
+    },
+    {
+        "id": 15,
+        "category": "sports",
+        "title": "Tiger Woods’s peers all agree his return to the top is great for golf - The Guardian",
+        "url": "https://www.theguardian.com/sport/2019/apr/15/tiger-woods-rory-mcilroy-brooks-koepka",
+        "description": "Rory McIlroy hailed Tiger Woods’s Masters win as a great day for golf as his peers lined up to congratulate the comeback king",
+        "is_read": 0,
+        "user_id": 1
+    }
+]
 ```
 
 ##### 401 (Unauthorized)
 >If you are not logged in, then endpoint will return an HTTP response with a status code `401` and a body as below.
 ```
-{
-  "error": true,
-  "message": "You are unathorized to view the content."
-}
+{ message: "No token provided. Please log in." }
 ```
 
 [Back to Table of Contents](#table-of-contents)
 
 ---
 
-## **DELETE USER**
-### Deletes seletcted user by ID
+## **DELETE Article**
+### Deletes seletcted article by ID
 
 *Mehod Url:* `/api/users/:id`
 *HTTP method:* **[DELETE]**
