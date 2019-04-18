@@ -394,12 +394,3 @@ ___
 [Back to Table of Contents](#table-of-contents)
 
 ---
-## **UPDATE USER**
-### Updates seletcted user by ID
-TBA
-
-[Back to Table of Contents](#table-of-contents)
-
-
-
----
