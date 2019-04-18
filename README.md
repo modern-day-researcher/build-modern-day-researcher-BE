@@ -480,3 +480,53 @@ ___
 [Back to Table of Contents](#table-of-contents)
 
 ---
+## **Toggle read status**
+### toggles read status
+
+*Mehod Url:* `/api/user/:id/read`
+*HTTP method:* **[POST]**
+
+#### Headers
+
+| name | type   | required | description |
+| ----- | ------ | -------- | ----- |
+| `Content-Type` | String | Yes | Must be application/json |
+| `Authorization`| String | Yes      | Bearer JWT authorization token |
+
+#### Body
+
+| name           | type   | required | description                        |
+| -------------- | ------ | -------- | ---------------------------------- |
+| `is_read`      | Boolean| Yes      | value must be current is_read value|
+
+#### Parameters
+
+| name    | type   | required | description              |
+| --------| ------ | -------- | ------------------------ |
+| `id`| Int    | Yes      | Id of specific article |
+
+
+#### Response
+
+##### 200 (Ok)
+>If you successfully change read status, the endpoint will return an HTTP response with a status code `200` and a body as below.
+```
+  {
+    1
+   }
+    
+```
+##### 401 (Unauthorized)
+>If you are not logged in, then endpoint will return an HTTP response with a status code `401` and a body as below.
+```
+{ message: "No token provided. Please log in." }
+```
+##### 500 (Internal Server Error)
+> If request fails, then endpoint will return an HTTP response with a status code `500` and a body as below.
+```
+{ message: "Could not retrieve user data.", error }
+```
+
+[Back to Table of Contents](#table-of-contents)
+
+---
