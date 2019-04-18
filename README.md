@@ -238,5 +238,168 @@ ___
 
 # USER ROUTES
 
+## **GET ALL USERS**
+### Returns all users
+
+*Mehod Url:* `/api/users`
+*HTTP method:* **[GET]**
+
+#### Headers
+
+| name | type   | required | description |
+| ----- | ------ | -------- | ----- |
+| `Content-Type` | String | Yes | Must be application/json |
+| `Authorization`| String | No       | Bearer JWT authorization token |
+
+#### Response
+
+##### 200 (OK)
+>If you successfully get al the users, the endpoint will return an HTTP response with a status code `200` and a body as below.
+```
+{
+  {
+    "total": 3,
+    "last_page": 1,
+    "per_page": 15,
+    "current_page": 1,
+    "from": 0,
+    "to": 3,
+    "data": [
+      {
+        "id": 1,
+        "username": "admin",
+        "email": "admin@administrator.com"
+      },
+      {
+        "id": 2,
+        "username": "beniscool",
+        "email": "beniscool@administrator.com"
+      },
+      {
+        "id": 3,
+        "username": "ceciljohn",
+        "email": "ceciljohn@administrator.com"
+      }
+    ]
+  }
+}
+```
+
+
+##### 400 (Bad Request)
+>If you send in invalid fields or the password of the user corresponding to the token does not match the currentPassword field, the endpoint will return an HTTP response with a status code `400` and a body as below.
+```
+{
+  "error": true,
+  "message": "There was a problem with your request."
+}
+```
+
+##### 401 (Unauthorized)
+>If you are not logged in, then endpoint will return an HTTP response with a status code `401` and a body as below.
+```
+{
+  "error": true,
+  "message": "You are unathorized to view the content."
+}
+```
+
+---
+
+## **GET USER BY ID**
+### Returns selected user by ID
+
+*Mehod Url:* `/api/users/:id`
+*HTTP method:* **[GET]**
+
+#### Headers
+
+| name | type   | required | description |
+| ----- | ------ | -------- | ----- |
+| `Content-Type` | String | Yes | Must be application/json |
+| `Authorization`| String | No       | Bearer JWT authorization token |
+
+#### Parameters
+
+| name    | type   | required | description              |
+| --------| ------ | -------- | ------------------------ |
+| `id`| Int    | Yes      | Id of specific user |
+
+
+#### Response
+
+##### 200 (OK)
+>If you successfully get al the users, the endpoint will return an HTTP response with a status code `200` and a body as below.
+```
+{
+  "id": 1,
+  "username": "admin",
+  "email": "admin@administrator.com"
+}
+```
+
+##### 401 (Unauthorized)
+>If you are not logged in, then endpoint will return an HTTP response with a status code `401` and a body as below.
+```
+{
+  "error": true,
+  "message": "You are unathorized to view the content."
+}
+```
+
+[Back to Table of Contents](#table-of-contents)
+
+---
+
+## **DELETE USER**
+### Deletes seletcted user by ID
+
+*Mehod Url:* `/api/users/:id`
+*HTTP method:* **[DELETE]**
+
+#### Headers
+
+| name | type   | required | description |
+| ----- | ------ | -------- | ----- |
+| `Content-Type` | String | Yes | Must be application/json |
+
+#### Parameters
+
+| name    | type   | required | description              |
+| --------| ------ | -------- | ------------------------ |
+| `id`| Int    | Yes      | Id of specific user |
+
+
+#### Response
+
+##### 200 (OK)
+>If you successfully delete the selected user, the endpoint will return an HTTP response with a status code `200` and a body as below.
+```
+{
+  "id": 1,
+  "username": "admin",
+  "email": "admin@administrator.com"
+}
+```
+
+##### 401 (Unauthorized)
+>If you are not logged in, then endpoint will return an HTTP response with a status code `401` and a body as below.
+```
+{
+  "error": true,
+  "message": "You are unathorized to view the content."
+}
+```
+
+[Back to Table of Contents](#table-of-contents)
+
+---
+## **UPDATE USER**
+### Updates seletcted user by ID
+TBA
+
+[Back to Table of Contents](#table-of-contents)
+
+
 
 ---
