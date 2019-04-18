@@ -386,7 +386,7 @@ ___
 ## **DELETE Article**
 ### Deletes seletcted article by ID
 
-*Mehod Url:* `/api/users/:id`
+*Mehod Url:* `/api/user/:id/articles`
 *HTTP method:* **[DELETE]**
 
 #### Headers
@@ -399,7 +399,7 @@ ___
 
 | name    | type   | required | description              |
 | --------| ------ | -------- | ------------------------ |
-| `id`| Int    | Yes      | Id of specific user |
+| `id`| Int    | Yes      | Id of specific article |
 
 
 #### Response
@@ -407,20 +407,17 @@ ___
 ##### 200 (OK)
 >If you successfully delete the selected user, the endpoint will return an HTTP response with a status code `200` and a body as below.
 ```
-{
-  "id": 1,
-  "username": "admin",
-  "email": "admin@administrator.com"
-}
+{ message: "Article removed from user" }
 ```
-
 ##### 401 (Unauthorized)
 >If you are not logged in, then endpoint will return an HTTP response with a status code `401` and a body as below.
 ```
-{
-  "error": true,
-  "message": "You are unathorized to view the content."
-}
+{ message: "No token provided. Please log in." }
+```
+##### 404 (Not Found)
+> If article does not exist, then endpoint will return an HTTP response with a status code `401` and a body as below.
+```
+{ message: "The article selected does not exist" }
 ```
 
 [Back to Table of Contents](#table-of-contents)
