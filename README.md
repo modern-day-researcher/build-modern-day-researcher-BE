@@ -1,5 +1,4 @@
 # Modern Day Researcher - Back End
-Back-End
 
 # rticle API 
 
