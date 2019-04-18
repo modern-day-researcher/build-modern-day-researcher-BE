@@ -438,6 +438,18 @@ ___
 | `Content-Type` | String | Yes | Must be application/json |
 | `Authorization`| String | Yes      | Bearer JWT authorization token |
 
+#### Body
+
+| name           | type   | required | description              |
+| -------------- | ------ | -------- | ------------------------ |
+| `category`     | String | Yes      |                          |
+| `title`        | String | No       |                          |
+| `url`          | String | Yes      |                          |
+| `description`  | String | No       |                          |
+| `is_read`      | Boolean| Yes      | Must be false            |
+| `user_id`      | Integer| Yes      |                          |
+
+
 #### Response
 
 ##### 201 (Created)
