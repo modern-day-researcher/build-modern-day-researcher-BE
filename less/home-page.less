@@ -1,0 +1,128 @@
+.home {
+  max-width: 800px;
+  width: 100%;
+
+  @media @mobile500 {
+    width: 90%;
+  }
+
+  .intro-section {
+    padding-bottom: 15px;
+    border-bottom: 2px dashed @navigation-border;
+
+    img {
+      margin-bottom: 20px;
+    }
+  }
+
+  .content-section {
+    margin: 30px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    }
+
+    .text-content {
+      width: 48%;
+      padding-right: 1%;
+
+      @media @mobile500 {
+        width: 100%;
+      }
+    }
+
+    .img-content {
+      width: 48%;
+      padding-left: 1%;
+
+      img {
+        border-radius: 10px;
+
+        @media @mobile500 {
+          width: 100%;
+        }
+      }
+
+      @media @mobile500 {
+        width: 100%;
+      }
+    }
+
+  .inverse-content {
+    padding-bottom: 30px;
+    border-bottom: 2px dashed @navigation-border;
+
+    .text-content {
+      padding-left: 1%;
+      padding-right: 0;
+    }
+
+    .img-content {
+      padding-right: 1%;
+      padding-left: 0;
+
+      @media @mobile500 {
+        order: 1;
+      }
+
+      img {
+        @media @mobile500 {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .content-destination {
+    width: 75%;
+    margin: 0 auto 30px;
+
+    img {
+      border-radius: 10px;
+    }
+
+    @media @mobile500 {
+      width: 100%;
+    }
+  }
+
+  .content-pick {
+    padding-top: 30px;
+    border-top: 2px dashed @navigation-border;
+    display: flex;
+    justify-content: space-between;
+
+    .destination {
+      width: 30%;
+      margin-bottom: 30px;
+
+      .btn {
+        .button-generator(1.8rem, #008080, white);
+
+        @media @mobile500 {
+          .button-generator(1.8rem, #17A2B8, white);
+          width: 100%;
+          margin-bottom: 20px;
+        }
+      }
+
+      @media @mobile500 {
+        width: 80%;
+        margin: 0 auto;
+      }
+    }
+
+    @media @mobile500 {
+      flex-direction: column;
+      margin: 0 auto;
+    }
+  }
+}// home
+
+.destination img {
+  border-radius: 100%;
+}
+
+.destination {
+  margin: 10px;
+}
