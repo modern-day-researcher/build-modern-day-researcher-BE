@@ -160,18 +160,17 @@ yarn test
 #### Response
 
 ##### 201 (Created)
->If you successfully register a user the endpoint will return an HTTP response with a status code `201` and a body as below.
+>If you successfully register a user the endpoint will return an HTTP response with a status code `201` and a body with user id as below.
 ```
 { 
   1
 }
 ```
-##### 400 (Bad Request)
->If you send in invalid fields, the endpoint will return an HTTP response with a status code `400` and a body as below.
+##### 500 (Internal Server Error)
+>If you send in invalid fields, the endpoint will return an HTTP response with a status code `500` and a body as below.
 ```
 {
-  "error": true,
-  "message": "There was a problem with your request."
+   "message": "Error registering. Please try again."
 }
 ```
 [Back to Table of Contents](#table-of-contents)
@@ -211,10 +210,10 @@ ____
 ##### 200 (OK)
 >If you successfully login, the endpoint will return an HTTP response with a status code `200` and a body as below.
 ```
-{
-  "message": "Welcome admin!",
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTQ0MzM1NjUxLCJleHAiOjE1NzU4OTMyNTF9.uqd2OHBYkGQpwjLTPPiPWYkYOKlG7whQDFkk46xGXoE"
-}
+    { "message": "Welcome TestUser1!, Have a token...",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXCJ9.eyJzdWJqZWN0IjoxLCJ1c2VybmFtZSI6IlRlc3RVc2VyMSIsImlhdCI6MTU1NTYwNjQ2OCwiZXhwIjoxNTU1NjkyODY4fQ.VP94u3RrTQAbqKpmS3gIMtpugwWkIssIDpsWTlhk_s",
+    "user_id": 1 }
+    
 ```
 ##### 400 (Bad Request)
 >If you send in invalid fields or the passwords do not match, the endpoint will return an HTTP response with a status code `400` and a body as below.
