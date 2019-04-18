@@ -14,6 +14,32 @@ router.get("/users", (req, res) => {
     });
 });
 
+//update users info
+
+router.put("/:id", (req, res) => {
+  let updatedU = req.body;
+
+  const { id } = req.params;
+  updatedU.id = id;
+
+  if (updatedU.password) {
+    const hash = bcrypt.hashSync(updatedU.password, 10);
+    updatedU.password = hash;
+  }
+
+  User.updateUser(id, updatedU)
+    .then(updated => {
+      if (updated > 0) {
+        res.status(200).json({ message: "User info updated" });
+      } else {
+        res.status(404).json({ message: "Could not update user" });
+      }
+    })
+    .catch(err => {
+      res.status(500).json({ message: "Error updating the user info" });
+    });
+});
+
 //get list of articles saved to a single user
 
 router.get("/:id", (req, res) => {
@@ -26,7 +52,8 @@ router.get("/:id", (req, res) => {
     });
 });
 
-// toggle read status
+// toggle read status   --- the id after user is the article's id not the users
+
 router.post("/:id/read", async (req, res) => {
   const { is_read } = req.body;
   const { id } = req.params;
@@ -41,6 +68,7 @@ router.post("/:id/read", async (req, res) => {
 });
 
 //add an article to a users list
+
 router.post("/articles", (req, res) => {
   const { category, url } = req.body;
 

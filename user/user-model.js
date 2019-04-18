@@ -2,6 +2,7 @@ const db = require("../data/dbConfig.js");
 
 module.exports = {
   getUsers,
+  updateUser,
   getFullUserData,
   updateReadStatus,
   addArticle,
@@ -18,6 +19,12 @@ async function getUsers() {
     "first_name",
     "last_name"
   );
+}
+
+function updateUser(id, user) {
+  return db("users")
+    .where("id", id)
+    .update(user, "id");
 }
 
 async function getFullUserData(userId) {
@@ -41,7 +48,7 @@ async function addArticle(article) {
 
 function getArticleById(id) {
   const article = db("articles")
-    .select("id", "title")
+    .select("id")
     .where("id", id)
     .first();
 
