@@ -424,3 +424,47 @@ ___
 [Back to Table of Contents](#table-of-contents)
 
 ---
+
+## **Create Article**
+### Creates article
+
+*Mehod Url:* `/api/user/articles`
+*HTTP method:* **[POST]**
+
+#### Headers
+
+| name | type   | required | description |
+| ----- | ------ | -------- | ----- |
+| `Content-Type` | String | Yes | Must be application/json |
+| `Authorization`| String | Yes      | Bearer JWT authorization token |
+
+#### Response
+
+##### 201 (Created)
+>If you successfully add the article, the endpoint will return an HTTP response with a status code `201` and a body as below.
+```
+  {
+    "id": 10,
+    "category": "New",
+    "title": "New Article",
+    "url": "https://www.new.com",
+    "description": "This a new article",
+    "is_read": 0,
+    "user_id": 1
+   }
+    
+```
+##### 401 (Unauthorized)
+>If you are not logged in, then endpoint will return an HTTP response with a status code `401` and a body as below.
+```
+{ message: "No token provided. Please log in." }
+```
+##### 400 (Bad Request)
+> If required fields not entered, then endpoint will return an HTTP response with a status code `400` and a body as below.
+```
+{ message: "Please enter an article category and url." }
+```
+
+[Back to Table of Contents](#table-of-contents)
+
+---
