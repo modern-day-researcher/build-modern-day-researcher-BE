@@ -275,7 +275,7 @@ ___
     }
 ]
 ```
-```
+
 ##### 500 (Internal Server Error)
 >If there is an error retrieving users then endpoint will return an HTTP response with a status code `500` and a body as below.
 ```
