@@ -215,21 +215,19 @@ ____
     "user_id": 1 }
     
 ```
-##### 400 (Bad Request)
->If you send in invalid fields or the passwords do not match, the endpoint will return an HTTP response with a status code `400` and a body as below.
-```
-{
-  "error": true,
-  "message": "There was a problem with your request."
-}
-```
 ##### 404 (Not Found)
->If you send in an email address that does not match one in the database, the endpoint will return an HTTP response with a status code `404` and a body as below.
+>If you send in invalid fields or the passwords do not match, the endpoint will return an HTTP response with a status code `404` and a body as below.
 ```
 {
-  "error": true,
-  "message": "The requested content does not exist."
+  { message: "Invalid Credentials" }
 }
+```
+##### 401 (Unauthorized)
+>If you do not put password and username, the endpoint will return an HTTP response with a status code `404` and a body as below
+```
+
+  { message: "Please log in" }
+
 ```
 
 [Back to Table of Contents](#table-of-contents)
