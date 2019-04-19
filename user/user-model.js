@@ -8,7 +8,8 @@ module.exports = {
   addArticle,
   getArticleById,
   removeArticle,
-  updateUser
+  updateUser,
+  getIDbyUser
 };
 
 async function getUsers() {
@@ -48,7 +49,7 @@ async function addArticle(article) {
 
 function getArticleById(id) {
   const article = db("articles")
-    .select("id")
+    .select()
     .where("id", id)
     .first();
 
@@ -65,4 +66,13 @@ function updateUser(id, user) {
   return db("users")
     .where("id", id)
     .update(user, "id");
+}
+
+function getIDbyUser(username) {
+  const id = db("users")
+    .select("id")
+    .where("username", username)
+    .first();
+
+  return id;
 }
