@@ -70,21 +70,36 @@ router.post("/:id/read", async (req, res) => {
 //add an article to a users list
 
 router.post("/articles", (req, res) => {
-  const { category, url } = req.body;
-
-  if (!category && !url) {
-    res
-      .status(400)
-      .json({ message: "Please enter an article category and url." });
-  } else {
-    User.addArticle(req.body, req.params)
-      .then(newId => {
-        res.status(201).json(newId);
-      })
-      .catch(error => {
-        res.status(500).json({ message: "Could not add article" });
-      });
+  const { category, url, is_read, username } = req.body;
+  if (!category) {
+    res.status(400).json({ message: "Please enter an article categor." });
   }
+  if (!url) {
+    res.status(400).json({ message: "Please enter an article  url." });
+  }
+
+  if (!username) {
+    res.status(400).json({ message: "Please enter a username." });
+  }
+
+  User.getIDbyUser(req.body.username)
+    .then(id => {
+      const user_id = id.id;
+
+      User.addArticle({ category, url, is_read, user_id })
+        .then(newArticle => {
+          res.status(201).json(newArticle);
+        })
+        .catch(error => {
+          res.status(500).json({ message: "Could not add article" });
+        });
+    })
+    .catch(error => {
+      res.status(404).json({
+        message: "User not found, usernames are case sensitive",
+        error
+      });
+    });
 });
 
 //delete a users article from list
