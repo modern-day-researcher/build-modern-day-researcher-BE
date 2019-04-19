@@ -9,7 +9,8 @@ module.exports = {
   getArticleById,
   removeArticle,
   updateUser,
-  getIDbyUser
+  getIDbyUser,
+  getCategoryUserData
 };
 
 async function getUsers() {
@@ -75,4 +76,8 @@ function getIDbyUser(username) {
     .first();
 
   return id;
+}
+
+async function getCategoryUserData(userId, category) {
+  return db("articles").where({ user_id: userId, category: category });
 }
