@@ -595,7 +595,7 @@ _HTTP method:_ **[POST]**
 
 ## **GET ARTICLES BY USER ID AND CATEGORY**
 
-### Returns selected articles by user ID
+### Returns selected articles by user ID and category
 
 _Mehod Url:_ `/api/user/:category/:id`
 _HTTP method:_ **[GET]**
