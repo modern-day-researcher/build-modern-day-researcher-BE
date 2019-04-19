@@ -21,6 +21,7 @@ With rticle you can share and receive articles with people.
   - [Delete article](#delete-article)
   - [Create article](#create-article)
   - [Toggle read status](#toggle-read-status)
+  - [Get articles by user ID and category](#Get-articles-by-user-id-and-category)
 
 ---
 
@@ -568,7 +569,7 @@ _HTTP method:_ **[POST]**
 ```
   {
     1
-   }
+  }
 
 ```
 
@@ -591,3 +592,67 @@ _HTTP method:_ **[POST]**
 [Back to Table of Contents](#table-of-contents)
 
 ---
+
+## **GET ARTICLES BY USER ID AND CATEGORY**
+
+### Returns selected articles by user ID
+
+_Mehod Url:_ `/api/user/:category/:id`
+_HTTP method:_ **[GET]**
+
+#### Headers
+
+| name            | type   | required | description                    |
+| --------------- | ------ | -------- | ------------------------------ |
+| `Content-Type`  | String | Yes      | Must be application/json       |
+| `Authorization` | String | Yes      | Bearer JWT authorization token |
+
+#### Parameters
+
+| name | type | required | description         |
+| ---- | ---- | -------- | ------------------- |
+| `id` | Int  | Yes      | Id of specific user |
+| `category` | String  | Yes      | case sensitive category |
+
+
+#### Response
+
+##### 200 (OK)
+
+> If you successfully get all the category specific articles of user, the endpoint will return an HTTP response with a status code `200` and a body as below.
+
+```
+[
+    {
+        "id": 1,
+        "category": "technology",
+        "title": "Purported pricing details of the Google Pixel 3a and Pixel 3a XL surface",
+        "url": "https://www.notebookcheck.net/Purported-pricing-details-of-the-Google-Pixel-3a-and-Pixel-3a-XL-surface.417469.0.html",
+        "description": "The Pixel 3a and 3a XL are expected to be launched next month. Pricing details have been mostly elusive until now but a new leak has given us a good idea of how Google plans to price the mid-range phones.",
+        "is_read": 0,
+        "user_id": 1
+    },
+    {
+        "id": 12,
+        "category": "technology",
+        "title": "Disc-free Xbox One S could land on May 7th",
+        "url": "https://techcrunch.com/2019/04/15/disc-free-xbox-one-s-could-land-on-may-7th/",
+        "description": "Microsoft is about to launch an even cheaper Xbox One S. In order to cut costs, the company is removing the BluRay disc drive altogether. According to leaked marketing images spotted by WinFuture (via Thurrott), the console could launch on May 7th for €229 in",
+        "is_read": 0,
+        "user_id": 1
+    }
+]
+```
+
+##### 401 (Unauthorized)
+
+> If you are not logged in, then endpoint will return an HTTP response with a status code `401` and a body as below.
+
+```
+{ message: "No token provided. Please log in." }
+```
+
+[Back to Table of Contents](#table-of-contents)
+
+---
+
