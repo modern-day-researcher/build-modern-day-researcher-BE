@@ -492,7 +492,7 @@ _HTTP method:_ **[POST]**
 | `url`         | String  | Yes      |               |
 | `description` | String  | No       |               |
 | `is_read`     | Boolean | Yes      | Must be false |
-| `user_id`     | Integer | Yes      |               |
+| `username`    | String  | Yes      | Is case sensitive              |
 
 #### Response
 
@@ -523,10 +523,10 @@ _HTTP method:_ **[POST]**
 
 ##### 400 (Bad Request)
 
-> If required fields not entered, then endpoint will return an HTTP response with a status code `400` and a body as below.
+> If  a required fields is not entered, then endpoint will return an HTTP response with a status code `400` and a body as below.
 
 ```
-{ message: "Please enter an article category and url." }
+{ message: "Please enter an *missing field*." }
 ```
 
 [Back to Table of Contents](#table-of-contents)
