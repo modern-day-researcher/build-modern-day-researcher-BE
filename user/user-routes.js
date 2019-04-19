@@ -122,4 +122,16 @@ router.delete("/:id/articles", (req, res) => {
     });
 });
 
+//get list of articles of specific category saved to a single user
+
+router.get("/:category/:id", (req, res) => {
+  User.getCategoryUserData(req.params.id, req.params.category)
+    .then(userData => {
+      res.status(200).json(userData);
+    })
+    .catch(error => {
+      res.status(500).json({ error: "Could not retrieve user data." });
+    });
+});
+
 module.exports = router;
