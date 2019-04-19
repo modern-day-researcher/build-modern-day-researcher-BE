@@ -32,7 +32,7 @@ router.put("/:id", (req, res) => {
       if (updated > 0) {
         res.status(200).json({ message: "User info updated" });
       } else {
-        res.status(404).json({ message: "Could not update user" });
+        res.status(401).json({ message: "Could not update user" });
       }
     })
     .catch(err => {

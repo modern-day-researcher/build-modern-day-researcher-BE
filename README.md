@@ -1,4 +1,4 @@
-# rticle API 
+# rticle API
 
 ## Introduction
 
@@ -16,22 +16,23 @@ With rticle you can share and receive articles with people.
   - [Register](#REGISTER)
   - [Login](#Login)
 - [User routes](#user-routes)
-  * [Get all users](#Get-all-users)
-  * [Get articles by user ID](#Get-articles-by-user-id)
-  * [Delete article](#delete-article)
-  * [Create article](#create-article)
-  * [Toggle read status](#toggle-read-status)
-----
+  - [Get all users](#Get-all-users)
+  - [Get articles by user ID](#Get-articles-by-user-id)
+  - [Delete article](#delete-article)
+  - [Create article](#create-article)
+  - [Toggle read status](#toggle-read-status)
+
+---
+
 # Overview
 
-This repository holds all back-end files and resources for the rticle application and its readme documentation. 
+This repository holds all back-end files and resources for the rticle application and its readme documentation.
 
 ---
 
 ## API URL
 
 https://rticle.herokuapp.com/
-
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -40,14 +41,19 @@ https://rticle.herokuapp.com/
 ## Installation
 
 Fork/Clone the repository. In the same directory as the package.json, in your terminal:
+
 ```
 yarn install
 ```
+
 This is to install all needed packages. To start the server, in your terminal, type:
+
 ```
 yarn server
 ```
+
 To test the repository:
+
 ```
 yarn test
 ```
@@ -59,17 +65,19 @@ yarn test
 ## SCHEMA
 
 `users`
+
 ```
 {
   "id": 1,                            // Integer [Primary key]
   "username": "admin",                // String [Required, Unique]
   "password": "password",             // String [Required]
-  "first_name": "Mr."                 // String 
-  "last_name": "Admin"                // String 
+  "first_name": "Mr."                 // String
+  "last_name": "Admin"                // String
 }
 ```
 
 `articles`
+
 ```
 {
   "id": 1,                                            // Integer [Primary key]
@@ -84,6 +92,7 @@ yarn test
 ```
 
 [Back to Table of Contents](#table-of-contents)
+
 ## Test Accounts
 
 ```
@@ -105,31 +114,29 @@ yarn test
 
 ## API ENDPOINTS
 
-| name | method | endpoint | description|
-| ---- | ------ | -------- | ----------- |
-| Register | POST | api/auth/register| Creates a new `user` to the users table in the database and returns user id|
-|Login|POST|/api/auth/login|Checks whether payload from the `body` matches with a user in the database. On Succesful login, returns a message, a `JWT Token`, and user id|
-|Get all users|GET|/api/users| `PROTECTED ROUTE` - Returns an array of user objects of all users|
-|Get user articles by ID|GET|/api/user/:id| `PROTECTED ROUTE` - Returns an array of object of articles of user|
-|Delete article by ID|DELETE|/api/article/:id| `PROTECTED ROUTE` - delete selected article by ID|
-|Creates article|POST|/api/article| `PROTECTED ROUTE` - returns creation success or faliure response|
-|Toggles article read status |POST|/api/article/read| `PROTECTED ROUTE` - returns update success or faliure response|
+| name                        | method | endpoint          | description                                                                                                                                   |
+| --------------------------- | ------ | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| Register                    | POST   | api/auth/register | Creates a new `user` to the users table in the database and returns user id                                                                   |
+| Login                       | POST   | /api/auth/login   | Checks whether payload from the `body` matches with a user in the database. On Succesful login, returns a message, a `JWT Token`, and user id |
+| Get all users               | GET    | /api/users        | `PROTECTED ROUTE` - Returns an array of user objects of all users                                                                             |
+| Get user articles by ID     | GET    | /api/user/:id     | `PROTECTED ROUTE` - Returns an array of object of articles of user                                                                            |
+| Delete article by ID        | DELETE | /api/article/:id  | `PROTECTED ROUTE` - delete selected article by ID                                                                                             |
+| Creates article             | POST   | /api/article      | `PROTECTED ROUTE` - returns creation success or faliure response                                                                              |
+| Toggles article read status | POST   | /api/article/read | `PROTECTED ROUTE` - returns update success or faliure response                                                                                |
 
 [Back to Table of Contents](#table-of-contents)
 
 ---
 
-
-
 # AUTH ROUTES
 
 ## **REGISTER**
+
 ### **Registers a user**
 
-*Method Url:* `/api/auth/register`
+_Method Url:_ `/api/auth/register`
 
-
-*HTTP method:* **[POST]**
+_HTTP method:_ **[POST]**
 
 #### Headers
 
@@ -139,14 +146,14 @@ yarn test
 
 #### Body
 
-| name           | type   | required | description              |
-| -------------- | ------ | -------- | ------------------------ |
-| `username`     | String | Yes      | Must be unique           |
-| `password`     | String | Yes      |                          |
-| `first_name`   | String | No       |                          |
-| `last_name`    | String | No       |                          |
+| name         | type   | required | description    |
+| ------------ | ------ | -------- | -------------- |
+| `username`   | String | Yes      | Must be unique |
+| `password`   | String | Yes      |                |
+| `first_name` | String | No       |                |
+| `last_name`  | String | No       |                |
 
-*example:*
+_example:_
 
 ```
 {
@@ -160,28 +167,36 @@ yarn test
 #### Response
 
 ##### 201 (Created)
->If you successfully register a user the endpoint will return an HTTP response with a status code `201` and a body with user id as below.
+
+> If you successfully register a user the endpoint will return an HTTP response with a status code `201` and a body with user id as below.
+
 ```
-{ 
+{
   1
 }
 ```
+
 ##### 500 (Internal Server Error)
->If you send in invalid fields, the endpoint will return an HTTP response with a status code `500` and a body as below.
+
+> If you send in invalid fields, the endpoint will return an HTTP response with a status code `500` and a body as below.
+
 ```
 {
    "message": "Error registering. Please try again."
 }
 ```
+
 [Back to Table of Contents](#table-of-contents)
-____
+
+---
 
 ## **LOGIN**
+
 ### **Logs a user in**
 
-*Method Url:* `/auth/login`
+_Method Url:_ `/auth/login`
 
-*HTTP method:* **[POST]**
+_HTTP method:_ **[POST]**
 
 #### Headers
 
@@ -191,12 +206,12 @@ ____
 
 #### Body
 
-| name           | type   | required | description              |
-| -------------- | ------ | -------- | ------------------------ |
-| `username`        | String | Yes      | Must match a username in the database |
-| `password`     | String | Yes      | Must match a password in the database |
+| name       | type   | required | description                           |
+| ---------- | ------ | -------- | ------------------------------------- |
+| `username` | String | Yes      | Must match a username in the database |
+| `password` | String | Yes      | Must match a password in the database |
 
-*example:*
+_example:_
 
 ```
 {
@@ -208,20 +223,28 @@ ____
 #### Response
 
 ##### 200 (OK)
->If you successfully login, the endpoint will return an HTTP response with a status code `200` and a body as below.
+
+> If you successfully login, the endpoint will return an HTTP response with a status code `200` and a body as below.
+
 ```
     { "message": "Welcome TestUser1!, Have a token...",
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXCJ9.eyJzdWJqZWN0IjoxLCJ1c2VybmFtZSI6IlRlc3RVc2VyMSIsImlhdCI6MTU1NTYwNjQ2OCwiZXhwIjoxNTU1NjkyODY4fQ.VP94u3RrTQAbqKpmS3gIMtpugwWkIssIDpsWTlhk_s",
     "user_id": 1 }
-    
+
 ```
+
 ##### 404 (Not Found)
->If you send in invalid fields or the passwords do not match, the endpoint will return an HTTP response with a status code `404` and a body as below.
+
+> If you send in invalid fields or the passwords do not match, the endpoint will return an HTTP response with a status code `404` and a body as below.
+
 ```
   { message: "Invalid Credentials" }
 ```
+
 ##### 401 (Unauthorized)
->If you do not put password and username, the endpoint will return an HTTP response with a status code `404` and a body as below
+
+> If you do not put password and username, the endpoint will return an HTTP response with a status code `404` and a body as below
+
 ```
 
   { message: "Please log in" }
@@ -229,27 +252,31 @@ ____
 ```
 
 [Back to Table of Contents](#table-of-contents)
-___
+
+---
 
 # USER ROUTES
 
 ## **GET ALL USERS**
+
 ### Returns all users
 
-*Mehod Url:* `/api/user/users`
-*HTTP method:* **[GET]**
+_Mehod Url:_ `/api/user/users`
+_HTTP method:_ **[GET]**
 
 #### Headers
 
-| name | type   | required | description |
-| ----- | ------ | -------- | ----- |
-| `Content-Type` | String | Yes | Must be application/json |
-| `Authorization`| String | Yes      | Bearer JWT authorization token |
+| name            | type   | required | description                    |
+| --------------- | ------ | -------- | ------------------------------ |
+| `Content-Type`  | String | Yes      | Must be application/json       |
+| `Authorization` | String | Yes      | Bearer JWT authorization token |
 
 #### Response
 
 ##### 200 (OK)
->If you successfully get al the users, the endpoint will return an HTTP response with a status code `200` and a body as below.
+
+> If you successfully get al the users, the endpoint will return an HTTP response with a status code `200` and a body as below.
+
 ```
 [
     {
@@ -277,44 +304,51 @@ ___
 ```
 
 ##### 500 (Internal Server Error)
->If there is an error retrieving users then endpoint will return an HTTP response with a status code `500` and a body as below.
+
+> If there is an error retrieving users then endpoint will return an HTTP response with a status code `500` and a body as below.
+
 ```
 { error: "Could not retrieve list of users" }
 ```
 
 ##### 401 (Unauthorized)
->If you are not logged in, then endpoint will return an HTTP response with a status code `401` and a body as below.
+
+> If you are not logged in, then endpoint will return an HTTP response with a status code `401` and a body as below.
+
 ```
 { message: "No token provided. Please log in." }
 ```
+
 [Back to Table of Contents](#table-of-contents)
 
 ---
 
 ## **GET ARTICLES BY USER ID**
+
 ### Returns selected articles by user ID
 
-*Mehod Url:* `/api/user/:id`
-*HTTP method:* **[GET]**
+_Mehod Url:_ `/api/user/:id`
+_HTTP method:_ **[GET]**
 
 #### Headers
 
-| name | type   | required | description |
-| ----- | ------ | -------- | ----- |
-| `Content-Type` | String | Yes | Must be application/json |
-| `Authorization`| String | Yes      | Bearer JWT authorization token |
+| name            | type   | required | description                    |
+| --------------- | ------ | -------- | ------------------------------ |
+| `Content-Type`  | String | Yes      | Must be application/json       |
+| `Authorization` | String | Yes      | Bearer JWT authorization token |
 
 #### Parameters
 
-| name    | type   | required | description              |
-| --------| ------ | -------- | ------------------------ |
-| `id`| Int    | Yes      | Id of specific user |
-
+| name | type | required | description         |
+| ---- | ---- | -------- | ------------------- |
+| `id` | Int  | Yes      | Id of specific user |
 
 #### Response
 
 ##### 200 (OK)
->If you successfully get all the articles of user, the endpoint will return an HTTP response with a status code `200` and a body as below.
+
+> If you successfully get all the articles of user, the endpoint will return an HTTP response with a status code `200` and a body as below.
+
 ```
 [
     {
@@ -375,7 +409,9 @@ ___
 ```
 
 ##### 401 (Unauthorized)
->If you are not logged in, then endpoint will return an HTTP response with a status code `401` and a body as below.
+
+> If you are not logged in, then endpoint will return an HTTP response with a status code `401` and a body as below.
+
 ```
 { message: "No token provided. Please log in." }
 ```
@@ -385,38 +421,46 @@ ___
 ---
 
 ## **DELETE Article**
+
 ### Deletes seletcted article by ID
 
-*Mehod Url:* `/api/user/:id/articles`
-*HTTP method:* **[DELETE]**
+_Mehod Url:_ `/api/user/:id/articles`
+_HTTP method:_ **[DELETE]**
 
 #### Headers
 
-| name | type   | required | description |
-| ----- | ------ | -------- | ----- |
-| `Content-Type` | String | Yes | Must be application/json |
+| name           | type   | required | description              |
+| -------------- | ------ | -------- | ------------------------ |
+| `Content-Type` | String | Yes      | Must be application/json |
 
 #### Parameters
 
-| name    | type   | required | description              |
-| --------| ------ | -------- | ------------------------ |
-| `id`| Int    | Yes      | Id of specific article |
-
+| name | type | required | description            |
+| ---- | ---- | -------- | ---------------------- |
+| `id` | Int  | Yes      | Id of specific article |
 
 #### Response
 
 ##### 200 (OK)
->If you successfully delete the selected user, the endpoint will return an HTTP response with a status code `200` and a body as below.
+
+> If you successfully delete the selected user, the endpoint will return an HTTP response with a status code `200` and a body as below.
+
 ```
 { message: "Article removed from user" }
 ```
+
 ##### 401 (Unauthorized)
->If you are not logged in, then endpoint will return an HTTP response with a status code `401` and a body as below.
+
+> If you are not logged in, then endpoint will return an HTTP response with a status code `401` and a body as below.
+
 ```
 { message: "No token provided. Please log in." }
 ```
+
 ##### 404 (Not Found)
+
 > If article does not exist, then endpoint will return an HTTP response with a status code `404` and a body as below.
+
 ```
 { message: "The article selected does not exist" }
 ```
@@ -426,34 +470,36 @@ ___
 ---
 
 ## **Create Article**
+
 ### Creates article
 
-*Mehod Url:* `/api/user/articles`
-*HTTP method:* **[POST]**
+_Mehod Url:_ `/api/user/articles`
+_HTTP method:_ **[POST]**
 
 #### Headers
 
-| name | type   | required | description |
-| ----- | ------ | -------- | ----- |
-| `Content-Type` | String | Yes | Must be application/json |
-| `Authorization`| String | Yes      | Bearer JWT authorization token |
+| name            | type   | required | description                    |
+| --------------- | ------ | -------- | ------------------------------ |
+| `Content-Type`  | String | Yes      | Must be application/json       |
+| `Authorization` | String | Yes      | Bearer JWT authorization token |
 
 #### Body
 
-| name           | type   | required | description              |
-| -------------- | ------ | -------- | ------------------------ |
-| `category`     | String | Yes      |                          |
-| `title`        | String | No       |                          |
-| `url`          | String | Yes      |                          |
-| `description`  | String | No       |                          |
-| `is_read`      | Boolean| Yes      | Must be false            |
-| `user_id`      | Integer| Yes      |                          |
-
+| name          | type    | required | description   |
+| ------------- | ------- | -------- | ------------- |
+| `category`    | String  | Yes      |               |
+| `title`       | String  | No       |               |
+| `url`         | String  | Yes      |               |
+| `description` | String  | No       |               |
+| `is_read`     | Boolean | Yes      | Must be false |
+| `user_id`     | Integer | Yes      |               |
 
 #### Response
 
 ##### 201 (Created)
->If you successfully add the article, the endpoint will return an HTTP response with a status code `201` and a body as below.
+
+> If you successfully add the article, the endpoint will return an HTTP response with a status code `201` and a body as below.
+
 ```
   {
     "id": 10,
@@ -464,15 +510,21 @@ ___
     "is_read": 0,
     "user_id": 1
    }
-    
+
 ```
+
 ##### 401 (Unauthorized)
->If you are not logged in, then endpoint will return an HTTP response with a status code `401` and a body as below.
+
+> If you are not logged in, then endpoint will return an HTTP response with a status code `401` and a body as below.
+
 ```
 { message: "No token provided. Please log in." }
 ```
+
 ##### 400 (Bad Request)
+
 > If required fields not entered, then endpoint will return an HTTP response with a status code `400` and a body as below.
+
 ```
 { message: "Please enter an article category and url." }
 ```
@@ -480,49 +532,58 @@ ___
 [Back to Table of Contents](#table-of-contents)
 
 ---
+
 ## **Toggle read status**
+
 ### toggles read status
 
-*Mehod Url:* `/api/user/:id/read`
-*HTTP method:* **[POST]**
+_Mehod Url:_ `/api/user/:id/read`
+_HTTP method:_ **[POST]**
 
 #### Headers
 
-| name | type   | required | description |
-| ----- | ------ | -------- | ----- |
-| `Content-Type` | String | Yes | Must be application/json |
-| `Authorization`| String | Yes      | Bearer JWT authorization token |
+| name            | type   | required | description                    |
+| --------------- | ------ | -------- | ------------------------------ |
+| `Content-Type`  | String | Yes      | Must be application/json       |
+| `Authorization` | String | Yes      | Bearer JWT authorization token |
 
 #### Body
 
-| name           | type   | required | description                        |
-| -------------- | ------ | -------- | ---------------------------------- |
-| `is_read`      | Boolean| Yes      | value must be current is_read value|
+| name      | type    | required | description                         |
+| --------- | ------- | -------- | ----------------------------------- |
+| `is_read` | Boolean | Yes      | value must be current is_read value |
 
 #### Parameters
 
-| name    | type   | required | description              |
-| --------| ------ | -------- | ------------------------ |
-| `id`| Int    | Yes      | Id of specific article |
-
+| name | type | required | description            |
+| ---- | ---- | -------- | ---------------------- |
+| `id` | Int  | Yes      | Id of specific article |
 
 #### Response
 
 ##### 200 (Ok)
->If you successfully change read status, the endpoint will return an HTTP response with a status code `200` and a body as below.
+
+> If you successfully change read status, the endpoint will return an HTTP response with a status code `200` and a body as below.
+
 ```
   {
     1
    }
-    
+
 ```
+
 ##### 401 (Unauthorized)
->If you are not logged in, then endpoint will return an HTTP response with a status code `401` and a body as below.
+
+> If you are not logged in, then endpoint will return an HTTP response with a status code `401` and a body as below.
+
 ```
 { message: "No token provided. Please log in." }
 ```
+
 ##### 500 (Internal Server Error)
+
 > If request fails, then endpoint will return an HTTP response with a status code `500` and a body as below.
+
 ```
 { message: "Could not retrieve user data.", error }
 ```

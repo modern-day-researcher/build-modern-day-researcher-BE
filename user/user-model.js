@@ -8,8 +8,11 @@ module.exports = {
   addArticle,
   getArticleById,
   removeArticle,
+<<<<<<< HEAD
   updateUser,
   getIDbyUser
+=======
+>>>>>>> 5fa5f15d854f5513090350f880de42d3daa9ff35
 };
 
 async function getUsers() {
@@ -61,6 +64,7 @@ function removeArticle(id) {
     .where("id", id)
     .del();
 }
+<<<<<<< HEAD
 
 function updateUser(id, user) {
   return db("users")
@@ -76,3 +80,5 @@ function getIDbyUser(username) {
 
   return id;
 }
+=======
+>>>>>>> 5fa5f15d854f5513090350f880de42d3daa9ff35
